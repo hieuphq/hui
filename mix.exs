@@ -42,7 +42,19 @@ defmodule Hui.MixProject do
       {:telemetry_poller, "~> 0.4"},
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
-      {:plug_cowboy, "~> 2.0"}
+      {:plug_cowboy, "~> 2.0"},
+
+      # heathcheck
+      {:health_checkup, "~> 0.1.0"},
+
+      # cors
+      {:cors_plug, "~> 2.0"},
+
+      # jwt
+      {:guardian, "~> 2.0"},
+
+      # hash
+      {:bcrypt_elixir, "~> 2.0"}
     ]
   end
 
