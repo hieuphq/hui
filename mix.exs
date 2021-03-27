@@ -55,7 +55,10 @@ defmodule Hui.MixProject do
 
       # hash
       {:bcrypt_elixir, "~> 2.0"},
-      {:phone, "0.5.0"}
+      {:phone, "0.5.0"},
+
+      # pagination
+      {:scrivener_ecto, "~> 2.0"}
     ]
   end
 

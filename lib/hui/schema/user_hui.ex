@@ -14,7 +14,7 @@ defmodule Hui.Schema.UserHui do
   @doc false
   def changeset(user_hui, attrs) do
     user_hui
-    |> cast(attrs, [:is_owner, :status])
-    |> validate_required([:is_owner, :status])
+    |> cast(attrs, [:user_id, :hui_id, :is_owner, :status])
+    |> validate_required([:user_id, :hui_id, :is_owner, :status])
   end
 end
