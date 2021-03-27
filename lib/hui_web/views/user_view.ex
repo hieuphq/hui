@@ -2,7 +2,7 @@ defmodule HuiWeb.UserView do
   use HuiWeb, :view
 
   def render("show.json", %{user: user}) do
-    render_one(user, __MODULE__, user)
+    render_one(user, __MODULE__, "user.json")
   end
 
   def render("user.json", %{user: user}) do

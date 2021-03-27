@@ -37,6 +37,12 @@ defmodule Hui.Schema.User do
     |> hash_password()
   end
 
+  def update_changeset(user, attrs) do
+    user
+    |> cast(attrs, [:name, :password])
+    |> hash_password()
+  end
+
   defp attach_identity(attrs, :email, val) do
     Map.put(attrs, "email", val)
   end

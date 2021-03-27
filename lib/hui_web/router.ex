@@ -20,8 +20,11 @@ defmodule HuiWeb.Router do
     end
   end
 
-  scope "/pms", HuiWeb do
+  scope "/api", HuiWeb do
     pipe_through([:api, :jwt])
+
+    get("/me", UserController, :me)
+    put("/me", UserController, :update_me)
   end
 
   # Enables LiveDashboard only for development
