@@ -6,6 +6,7 @@ defmodule Hui.Schema.UserHui do
     field :is_owner, :boolean, default: false
     field :user_id, :id
     field :hui_id, :id
+    field :status, :string
 
     timestamps()
   end
@@ -13,7 +14,7 @@ defmodule Hui.Schema.UserHui do
   @doc false
   def changeset(user_hui, attrs) do
     user_hui
-    |> cast(attrs, [:is_owner])
-    |> validate_required([:is_owner])
+    |> cast(attrs, [:is_owner, :status])
+    |> validate_required([:is_owner, :status])
   end
 end

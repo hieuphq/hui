@@ -4,6 +4,9 @@ defmodule Hui.Schema.User do
 
   schema "user" do
     field :email, :string
+    field :identity, :string
+    field :identity_type, :string
+    field :phone, :string
     field :hashed_password, :string
     field :name, :string
     field :status, :string
@@ -19,15 +22,31 @@ defmodule Hui.Schema.User do
     |> validate_required([:name, :email, :hashed_password, :status])
   end
 
-  def create_changeset(attrs) do
-    attrs = Map.put(attrs, "status", "active")
+  def create_changeset(attrs, type) do
+    attrs =
+      attrs
+      |> Map.put("status", "active")
+      |> Map.put("identity_type", Atom.to_string(type))
+      |> attach_identity(type, Map.get(attrs, "identity", nil))
 
     %__MODULE__{}
-    |> cast(attrs, [:name, :email, :password, :status])
-    |> validate_required([:name, :email, :password, :status])
-    |> validate_format(:email, ~r/@/)
+    |> cast(attrs, [:name, :email, :phone, :identity, :password, :status, :identity_type])
+    |> validate_required([:name, :identity, :password, :status, :identity_type])
     |> unique_constraint(:email)
+    |> unique_constraint(:phone)
     |> hash_password()
+  end
+
+  defp attach_identity(attrs, :email, val) do
+    Map.put(attrs, "email", val)
+  end
+
+  defp attach_identity(attrs, :phone, val) do
+    Map.put(attrs, "phone", val)
+  end
+
+  defp attach_identity(attrs, _type, _val) do
+    attrs
   end
 
   defp hash_password(%{valid?: true, changes: %{password: password}} = changeset) do

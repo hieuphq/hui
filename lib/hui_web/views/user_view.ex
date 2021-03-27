@@ -7,8 +7,12 @@ defmodule HuiWeb.UserView do
 
   def render("user.json", %{user: user}) do
     %{
-      email: user.email,
+      identity: parse_identity(user),
       name: user.name
     }
   end
+
+  defp parse_identity(%{identity_type: "email", email: email}), do: email
+  defp parse_identity(%{identity_type: "phone", phone: phone}), do: phone
+  defp parse_identity(_), do: ""
 end

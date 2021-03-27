@@ -3,7 +3,7 @@ defmodule Hui.Repo.Migrations.CreateHui do
 
   def change do
     create table(:hui) do
-      add :name, :string
+      add :name, :string, null: false
       add :currency_id, references(:currency, on_delete: :nothing), null: false
 
       timestamps()

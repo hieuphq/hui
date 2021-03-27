@@ -54,7 +54,8 @@ defmodule Hui.MixProject do
       {:guardian, "~> 2.0"},
 
       # hash
-      {:bcrypt_elixir, "~> 2.0"}
+      {:bcrypt_elixir, "~> 2.0"},
+      {:phone, "0.5.0"}
     ]
   end
 

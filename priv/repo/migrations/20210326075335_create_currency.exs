@@ -3,8 +3,9 @@ defmodule Hui.Repo.Migrations.CreateCurrency do
 
   def change do
     create table(:currency) do
-      add :name, :string
-      add :code, :string
+      add :name, :string, null: false
+      add :code, :string, null: false
+      add :symbol, :string, null: false
 
       timestamps()
     end

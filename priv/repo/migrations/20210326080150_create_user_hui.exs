@@ -6,6 +6,7 @@ defmodule Hui.Repo.Migrations.CreateUserHui do
       add :is_owner, :boolean, default: false, null: false
       add :user_id, references(:user, on_delete: :nothing), null: false
       add :hui_id, references(:hui, on_delete: :nothing), null: false
+      add :status, :string, null: false
 
       timestamps()
     end

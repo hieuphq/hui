@@ -5,6 +5,7 @@ defmodule Hui.Schema.Currency do
   schema "currency" do
     field :code, :string
     field :name, :string
+    field :symbol, :string
 
     timestamps()
   end
