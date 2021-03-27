@@ -5,8 +5,23 @@ defmodule HuiWeb.Router do
     plug :accepts, ["json"]
   end
 
+  pipeline :jwt do
+    plug(Hui.AuthAccessPipeline)
+  end
+
+  forward("/healthz", HealthCheckup, resp_body: "ok")
+
   scope "/api", HuiWeb do
     pipe_through :api
+
+    scope "/auth" do
+      post("/login", AuthController, :login)
+      post("/sign-up", AuthController, :sign_up)
+    end
+  end
+
+  scope "/pms", HuiWeb do
+    pipe_through([:api, :jwt])
   end
 
   # Enables LiveDashboard only for development
