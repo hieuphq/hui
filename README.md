@@ -19,12 +19,14 @@ Ready to run in production? Please [check our deployment guides](https://hexdocs
 - [x] me `/me`
 - [x] update profile `/me`
 - [ ] Hui
-  - [ ] Init Hui
-  - [ ] Hui list with status `joined`, `awaiting`, `left`
-  - [ ] Invite member
+  - [x] Init Hui
+  - [x] Hui list with status `active`, `awaiting`, `left`
+  - [x] Invite member
   - [ ] Confirm join
   - [ ] Leave Hui
   - [ ] Transfer Admin
+- [ ] Member
+  - [x] active list `/hui/{hui_id}/members`
 - [ ] Bill
   - [ ] Make a bill and split for members(all, selected members, a member)
 - [ ] Balance

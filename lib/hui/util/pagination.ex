@@ -1,7 +1,7 @@
 defmodule Util.Pagination do
   alias Scrivener.Page
 
-  def page_info(result = %Page{}) do
+  def info(result = %Page{}) do
     %{
       entries: result.entries,
       meta: %{

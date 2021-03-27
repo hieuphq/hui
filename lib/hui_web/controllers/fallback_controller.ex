@@ -52,10 +52,15 @@ defmodule HuiWeb.FallbackController do
       status_code
       |> Status.code()
 
+    msg =
+      reason
+      |> Atom.to_string()
+      |> String.replace("_", " ")
+
     conn
     |> put_status(status_code)
     |> put_view(ErrorView)
-    |> render(:"#{status_number}", code: reason, message: Atom.to_string(reason))
+    |> render(:"#{status_number}", code: reason, message: msg)
   end
 
   # This is called when no JWT token is present

@@ -25,7 +25,7 @@ defmodule HuiWeb.HuiController do
       huis =
         user
         |> HuiList.list(params)
-        |> Pagination.page_info()
+        |> Pagination.info()
 
       render(conn, "index.json",
         hui: huis.entries,
