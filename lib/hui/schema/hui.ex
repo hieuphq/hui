@@ -15,4 +15,10 @@ defmodule Hui.Schema.Hui do
     |> cast(attrs, [:name])
     |> validate_required([:name])
   end
+
+  def create_changeset(hui, attrs) do
+    hui
+    |> cast(attrs, [:name, :currency_id])
+    |> validate_required([:name, :currency_id])
+  end
 end

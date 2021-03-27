@@ -1,7 +1,7 @@
 defmodule Hui.User do
   alias Hui.Schema.User
   alias Hui.Repo
-  alias Hui.Util.Param
+  alias Util.Param
 
   def get_by_identity(identity) when is_binary(identity) do
     Repo.get_by(User, identity: identity)

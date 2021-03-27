@@ -25,6 +25,11 @@ defmodule HuiWeb.Router do
 
     get("/me", UserController, :me)
     put("/me", UserController, :update_me)
+
+    resources("/hui", HuiController, only: [:create, :index]) do
+      resources("/members", MemberController)
+      resources("/invitation", InvitationController, only: [:create])
+    end
   end
 
   # Enables LiveDashboard only for development
