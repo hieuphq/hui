@@ -14,6 +14,8 @@ Ready to run in production? Please [check our deployment guides](https://hexdocs
 - [x] Auth: `api/auth`
   - [x] Sign up by phone, email `/sign-up`
   - [x] Log in `/login`
+- [x] me `/me`
+- [x] update profile `/me`
 - [ ] Hui
   - [ ] Init Hui
   - [ ] Hui list with status `joined`, `awaiting`, `left`
