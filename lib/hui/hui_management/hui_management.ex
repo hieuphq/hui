@@ -1,4 +1,4 @@
-defmodule Hui.HuiManagement.HuiList do
+defmodule Hui.HuiManagement do
   import Ecto.Query
   alias Hui.Schema.User
   alias Hui.Schema.UserHui
@@ -25,5 +25,9 @@ defmodule Hui.HuiManagement.HuiList do
         status: uh.status,
         is_owner: uh.is_owner
       }
+  end
+
+  def get(id) do
+    Repo.get(HuiModel, id)
   end
 end
