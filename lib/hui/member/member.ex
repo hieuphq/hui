@@ -18,4 +18,19 @@ defmodule Hui.Member do
       _ -> true
     end
   end
+
+  def owner?(hui_id, user_id) do
+    query =
+      from uh in UserHui,
+        where:
+          uh.hui_id == ^hui_id and uh.user_id == ^user_id and uh.status in ^@active_status and
+            uh.is_owner == ^true
+
+    query
+    |> Repo.one()
+    |> case do
+      nil -> false
+      _ -> true
+    end
+  end
 end

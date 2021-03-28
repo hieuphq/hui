@@ -2,7 +2,7 @@ defmodule HuiWeb.HuiController do
   use HuiWeb, :controller
 
   alias Hui.HuiManagement.HuiCreator
-  alias Hui.HuiManagement.HuiList
+  alias Hui.HuiManagement
   alias Util.Pagination
 
   action_fallback(HuiWeb.FallbackController)
@@ -24,7 +24,7 @@ defmodule HuiWeb.HuiController do
     with user = %{} <- Guardian.Plug.current_resource(conn) do
       huis =
         user
-        |> HuiList.list(params)
+        |> HuiManagement.list(params)
         |> Pagination.info()
 
       render(conn, "index.json",

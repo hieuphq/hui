@@ -27,8 +27,12 @@ defmodule HuiWeb.Router do
     put("/me", UserController, :update_me)
 
     resources("/hui", HuiController, only: [:create, :index]) do
-      resources("/members", MemberController)
+      resources("/members", MemberController) do
+        post("/deposit", TransactionController, :member_deposit)
+      end
+
       resources("/invitation", InvitationController, only: [:create])
+      post("/deposit", TransactionController, :self_deposit)
     end
   end
 

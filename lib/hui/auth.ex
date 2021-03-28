@@ -41,16 +41,17 @@ defmodule Hui.Auth do
   end
 
   def login(%{"identity" => identity, "password" => password} = _params) do
-    with user = %{} <- UserRepo.get_by_identity(identity),
-         {:check_password, true} <- {:check_password, validate_password(user, password)},
+    with user = %{} <- UserRepo.get_by_identity(identity) |> IO.inspect(),
+         {:check_password, true} <-
+           {:check_password, validate_password(user, password)},
          {:ok, token, _claims} = Guardian.encode_and_sign(user) do
       {:ok, token, user}
     else
       nil ->
-        {:error, :not_found, "account or password is invalid"}
+        {:error, :not_found, :account_or_password_is_invalid}
 
       {:check_password, _} ->
-        {:error, :not_found, "account or password is invalid"}
+        {:error, :not_found, :account_or_password_is_invalid}
 
       errs ->
         errs
